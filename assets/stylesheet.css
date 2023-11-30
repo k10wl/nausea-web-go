@@ -47,21 +47,6 @@ ul {
     list-style-type: 0;
 }
 
-.wrapper {
-  display: grid;
-  grid-template-columns:
-    1fr
-    min(65ch, 100%)
-    1fr;
-}
-.wrapper > * {
-  grid-column: 2;
-}
-.full-bleed {
-  width: 100%;
-  grid-column: 1 / 4;
-}
-
 .header {
   padding: 0 12px;
   font-size: var(--text-4xl);
@@ -81,6 +66,6 @@ ul {
   display: grid;
   place-items: center;
   text-align: center;
-  font-size: var(--text-3xl);
+  font-size: var(--text-5xl);
   text-decoration: none;
 }

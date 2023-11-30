@@ -20,17 +20,14 @@ func main() {
 func home(tmpl *template.Template) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
-			notFound(tmpl)(w, r)
+			fmt.Printf("\"404\": %v\n", "404")
+			tmpl.ExecuteTemplate(w, "404", TemplalteData{
+				"Title": "Nausea",
+			})
 			return
 		}
 		tmpl.ExecuteTemplate(w, "home", TemplalteData{
 			"Title": "Nausea",
 		})
-	}
-}
-
-func notFound(tmpl *template.Template) func(http.ResponseWriter, *http.Request) {
-	return func(w http.ResponseWriter, _ *http.Request) {
-		fmt.Fprint(w, "did we lost this page? maybe? maybe it did not exist?")
 	}
 }
