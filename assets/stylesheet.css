@@ -1,0 +1,57 @@
+:root {
+  --header-height: 2rem;
+}
+
+body {
+  color: white;
+	background: url("/assets/home-bg.jpg"), black;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+
+	height: 100vh;
+	height: 100dvh;
+
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    margin:0;
+    padding: 0;
+    text-indent: 0;
+    list-style-type: 0;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns:
+    1fr
+    min(65ch, 100%)
+    1fr;
+}
+.wrapper > * {
+  grid-column: 2;
+}
+.full-bleed {
+  width: 100%;
+  grid-column: 1 / 4;
+}
+
+.h-full {
+  height: calc(100% - var(--header-height));
+}
+
+.hero {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: 3rem;
+  text-decoration: none;
+}
