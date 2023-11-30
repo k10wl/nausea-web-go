@@ -4,7 +4,18 @@
 }
 
 :root {
-  --header-height: 2rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.5rem;
+  --text-xl: 2rem;
+  --text-2xl: 2.5rem;
+  --text-3xl: 3rem;
+  --text-4xl: 3.5rem;
+  --text-5xl: 4rem;
+
+  --header-height: var(--text-5xl);
 }
 
 body {
@@ -51,6 +62,17 @@ ul {
   grid-column: 1 / 4;
 }
 
+.header {
+  padding: 0 12px;
+  font-size: var(--text-4xl);
+  height: var(--header-height);
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+}
+
 .h-full {
   height: calc(100% - var(--header-height));
 }
@@ -59,6 +81,6 @@ ul {
   display: grid;
   place-items: center;
   text-align: center;
-  font-size: 3rem;
+  font-size: var(--text-3xl);
   text-decoration: none;
 }
