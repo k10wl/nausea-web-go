@@ -20,7 +20,6 @@ func main() {
 func home(tmpl *template.Template) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
-			fmt.Printf("\"404\": %v\n", "404")
 			tmpl.ExecuteTemplate(w, "404", TemplalteData{
 				"Title": "Nausea",
 			})
