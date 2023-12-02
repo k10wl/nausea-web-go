@@ -4,19 +4,27 @@ const header = document.getElementsByClassName("header");
 const headerNav = document.getElementsByClassName("header__nav");
 
 /**
- * @param {PointerEvent} e
+ * Invokes callback upon click outside of element
+ * @param {HTMLElement} element - target element
+ * @param {() => any} callback function to trigger on outside click
  */
-function activeHeaderClick(e) {
-  if (e.composedPath().includes(header.item(0))) {
-    return;
+function onOutsidePointerDown(element, callback) {
+  /**
+   * @param {PointerEvent} event
+   */
+  function onPointerDown(event) {
+    if (event.composedPath().includes(element)) {
+      return;
+    }
+    callback();
+    document.removeEventListener("pointerdown", onPointerDown);
   }
-  toggleHeader();
-  document.removeEventListener("pointerdown", activeHeaderClick);
+  document.addEventListener("pointerdown", onPointerDown);
 }
 
 function toggleHeader() {
   const expanded = headerNav.item(0)?.toggleAttribute("aria-expanded");
   if (expanded) {
-    document.addEventListener("pointerdown", activeHeaderClick);
+    onOutsidePointerDown(header.item(0), toggleHeader);
   }
 }
