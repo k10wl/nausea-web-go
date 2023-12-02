@@ -13,7 +13,7 @@
 
 body {
   color: white;
-  background: url("/assets/home-bg.jpg"), black;
+  background: url("/assets/bg.webp"), black;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
