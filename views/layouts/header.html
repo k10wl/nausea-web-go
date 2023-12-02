@@ -1,13 +1,25 @@
 {{define "header"}}
 <header class="header">
-    <nav class="header__nav">
-      <ul>
-        <li>
-          <a href="/">
-            nausea
-          </a>
-        </li>
-      </ul>
-    </nav>
+  <button class="header__toggle" onclick="toggleHeader()">$</button>
+  <nav hx-boost="true" class="header__nav">
+    <ul id="head-nav" hx-swap-oob="true" class="header__nav-list">
+      <li>
+        <a onclick="toggleHeader()" hx-target="#page" href="/">nausea</a>
+      </li>
+      <li {{if .HomePage}}class="header__nav--hide" {{end}}>
+        <a onclick="toggleHeader()" hx-target="#page" href="/about">about</a>
+      </li>
+      <li {{if .HomePage}}class="header__nav--hide" {{end}}>
+        <a onclick="toggleHeader()" hx-target="#page" href="/gallery">
+          gallery
+        </a>
+      </li>
+      <li {{if .HomePage}}class="header__nav--hide" {{end}}>
+        <a onclick="toggleHeader()" hx-target="#page" href="/contacts">
+          contacts
+        </a>
+      </li>
+    </ul>
+  </nav>
 </header>
 {{end}}

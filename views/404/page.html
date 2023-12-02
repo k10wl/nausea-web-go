@@ -1,13 +1,14 @@
 {{define "404"}}
 {{template "head" .}}
-{{template "header"}}
-<main class="h-full">
+{{template "header" .}}
+<main id="page" hx-swap-oob="true" class="h-full">
   <div class="hero h-full">
     <div>
       <p>
-        Did we lost this page? Maybe.<br> Or maybe it did not exist
+        Did we lost this page? Maybe.<br />
+        Or maybe it did not exist
       </p>
-      <a href="/">
+      <a hx-boost="true" hx-target="#page" href="/">
         > Anyway, it's time to go home <
       </a>
     </div>

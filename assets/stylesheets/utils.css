@@ -1,0 +1,11 @@
+.h-full {
+  height: calc(100% - var(--header-height));
+}
+
+.hero {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: var(--text-5xl);
+  text-decoration: none;
+}

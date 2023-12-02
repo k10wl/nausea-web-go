@@ -1,0 +1,21 @@
+:root {
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.5rem;
+  --text-xl: 2rem;
+  --text-2xl: 2.5rem;
+  --text-3xl: 3rem;
+  --text-4xl: 3.5rem;
+  --text-5xl: 4rem;
+}
+
+@font-face {
+  font-family: "Nausea Handwrite";
+  src: url("/assets/NauseaHandwriteRegular.ttf");
+}
+
+* {
+  font-family: "Nausea Handwrite", sans-serif;
+}

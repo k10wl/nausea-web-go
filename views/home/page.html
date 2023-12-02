@@ -1,18 +1,22 @@
 {{define "home"}}
 {{template "head" .}}
-{{template "header"}}
-<main class="h-full">
+{{template "header" .}}
+<main
+  id="page"
+  hx-swap-oob="true"
+  class="h-full {{if .HomePage}}home-page{{end}}"
+>
   <div class="hero h-full">
-    <nav>
+    <nav hx-boost="true">
       <ul>
         <li>
-          <a href="/about">about</a>
+          <a href="/about" hx-target="#page">about</a>
         </li>
         <li>
-          <a href="/gallery">gallery</a>
+          <a href="/gallery" hx-target="#page">gallery</a>
         </li>
         <li>
-          <a href="/contacts">contacts</a> 
+          <a href="/contacts" hx-target="#page">contacts</a>
         </li>
       </ul>
     </nav>

@@ -26,7 +26,8 @@ func home(tmpl *template.Template) func(http.ResponseWriter, *http.Request) {
 			return
 		}
 		tmpl.ExecuteTemplate(w, "home", TemplalteData{
-			"Title": "Nausea",
+			"Title":    "Nausea",
+			"HomePage": true,
 		})
 	}
 }
