@@ -1,11 +1,7 @@
 {{define "home"}}
 {{template "head" .}}
 {{template "header" .}}
-<main
-  id="page"
-  hx-swap-oob="true"
-  class="h-full {{if .HomePage}}home-page{{end}}"
->
+<main id="page" hx-swap-oob="true" class="h-full">
   <div class="hero h-full">
     <nav hx-boost="true">
       <ul>
