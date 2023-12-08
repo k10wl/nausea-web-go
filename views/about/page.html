@@ -1,0 +1,12 @@
+{{define "about"}}
+{{template "head" .}}
+{{template "header" .}}
+<main id="page" hx-swap-oob="true" class="h-full">
+  <div class="hero h-full">
+    <article>
+      <p class="text-lg text-end">{{.Data}}</p>
+    </article>
+  </div>
+</main>
+{{template "tail"}}
+{{end}}

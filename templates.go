@@ -13,5 +13,6 @@ func NewTemplate() *template.Template {
 	tmpl.ParseGlob("./views/layouts/*.html")
 	tmpl.ParseGlob("./views/404/*.html")
 	tmpl.ParseGlob("./views/home/*.html")
+	tmpl.ParseGlob("./views/about/*.html")
 	return tmpl
 }
