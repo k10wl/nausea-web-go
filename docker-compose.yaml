@@ -8,3 +8,6 @@ services:
       - 8080:8080
     volumes:
       - ./:/app
+      - ~/.config:/.config
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: /.config/gcloud/application_default_credentials.json
