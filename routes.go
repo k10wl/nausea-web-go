@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func home(tmpl *template.Template, store *Store) func(http.ResponseWriter, *http.Request) {
+func home(tmpl *template.Template) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
 			tmpl.ExecuteTemplate(w, "404", TemplalteData{
@@ -20,11 +20,11 @@ func home(tmpl *template.Template, store *Store) func(http.ResponseWriter, *http
 	}
 }
 
-func about(tmpl *template.Template, store *Store) func(http.ResponseWriter, *http.Request) {
+func about(tmpl *template.Template) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, _ *http.Request) {
 		tmpl.ExecuteTemplate(w, "about", TemplalteData{
 			"Title": "Nausea",
-			"Data":  store.GetAbout().Bio,
+			"Data":  "nothing",
 		})
 	}
 }

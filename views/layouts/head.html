@@ -1,25 +1,20 @@
 {{define "head"}}
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>{{.Title}}</title>
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.png" />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="/assets/favicon-dark.png"
-      media="(prefers-color-scheme: dark)"
-    />
-    <link rel="stylesheet" href="/assets/stylesheets/main.css" />
-    <script src="/assets/script.js"></script>
-    <script
-      src="https://unpkg.com/htmx.org@1.9.9"
-      integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-{{end}}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>{{.Title}}</title>
+  <link rel="icon" type="image/x-icon" href="/dist/assets/favicon.png" />
+  <link rel="icon" type="image/x-icon" href="/dist/assets/favicon-dark.png" media="(prefers-color-scheme: dark)" />
+  <link rel="stylesheet" href="/dist/assets/stylesheets/main.css" />
+  <script src="/dist/assets/script.js"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.9"
+    integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  {{end}}
