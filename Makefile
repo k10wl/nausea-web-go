@@ -5,6 +5,10 @@ DOCKER_CONTAINER_NAME := nausea-web
 
 docker-dev:
 	@echo "Building and starting Docker containers..."
+	@docker-compose up
+
+docker-dev-build:
+	@echo "Building and starting Docker containers..."
 	@docker-compose up --build
 
 docker-build:
