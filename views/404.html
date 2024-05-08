@@ -1,16 +1,15 @@
-{{define "404"}}
+{{define "/404"}}
 {{template "head" .}}
 {{template "header" .}}
 <main id="page" hx-swap-oob="true" class="h-full">
   <div class="hero h-full">
     <div>
       <p>
-        Did we lost this page? Maybe.<br />
-        Or maybe it did not exist
+        Did we lose this page? Maybe.<br />
+        Or maybe it never existed.
       </p>
       <a hx-boost="true" hx-target="#page" href="/">
-        > Anyway, it's time to go home <
-      </a>
+        > Anyway, it's time to go home < </a>
     </div>
   </div>
 </main>
