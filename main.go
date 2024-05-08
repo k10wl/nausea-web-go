@@ -6,14 +6,14 @@ import (
 	"net/http"
 
 	"nausea-web/internal/compress"
-	"nausea-web/internal/dist"
+	"nausea-web/internal/dist_generator"
 	"nausea-web/internal/minify"
 	"nausea-web/internal/server"
 	"nausea-web/internal/templates"
 )
 
 func init() {
-	err := dist.NewDistCreator(
+	err := dist_generator.NewDistCreator(
 		"./assets",
 		minify.NewTdewolffMinifier(),
 		compress.NewGzip(),
