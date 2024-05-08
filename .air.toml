@@ -7,14 +7,14 @@ tmp_dir = "tmp"
   bin = "./tmp/main"
   cmd = "go build -buildvcs=false -o ./tmp/main ."
   delay = 1000
-  exclude_dir = ["tmp"]
+  exclude_dir = ["tmp", "dist"]
   exclude_file = []
   exclude_regex = ["_test.go"]
   exclude_unchanged = false
   follow_symlink = false
   full_bin = ""
   include_dir = []
-  include_ext = ["go", "html"]
+  include_ext = ["go", "html", "css", "js"]
   include_file = []
   kill_delay = "0s"
   log = "build-errors.log"
@@ -25,7 +25,7 @@ tmp_dir = "tmp"
   rerun = false
   rerun_delay = 500
   send_interrupt = false
-  stop_on_error = false
+  stop_on_error = true
 
 [color]
   app = ""
