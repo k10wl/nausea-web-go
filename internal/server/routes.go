@@ -12,7 +12,6 @@ func addRoutes(
 	t *template.Template,
 	db *db.DB,
 ) {
-	mux.Handle("/", notFoundMiddleware(t, db,
-		routeLoggerMiddleware(handleHome(t, db))))
+	mux.Handle("/", routeLoggerMiddleware(notFoundMiddleware(t, db, handleHome(t, db))))
 	mux.Handle("/dist/", handleDist())
 }
