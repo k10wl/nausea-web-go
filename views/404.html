@@ -1,6 +1,6 @@
 {{define "/404"}}
-{{template "head" .}}
-{{template "header" .}}
+{{template "_head" .}}
+{{template "_header" .}}
 <main id="page" hx-swap-oob="true" class="h-full">
   <div class="hero h-full">
     <div>
@@ -13,5 +13,5 @@
     </div>
   </div>
 </main>
-{{template "tail"}}
+{{template "_tail"}}
 {{end}}

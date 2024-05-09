@@ -1,4 +1,4 @@
-{{define "head"}}
+{{define "_head"}}
 <!doctype html>
 <html lang="en">
 
@@ -16,5 +16,5 @@
     crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body style="--bg-url: url('{{.Meta.Background.URL}}');">
   {{end}}

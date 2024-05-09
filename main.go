@@ -4,9 +4,12 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"nausea-web/internal/compress"
+	"nausea-web/internal/db"
 	"nausea-web/internal/dist_generator"
+	"nausea-web/internal/firestore"
 	"nausea-web/internal/minify"
 	"nausea-web/internal/server"
 	"nausea-web/internal/templates"
@@ -25,9 +28,12 @@ func init() {
 }
 
 func main() {
+	projectID := os.Getenv("PROJECT_ID")
 	port := ":8080"
 	t := templates.NewTemplate()
-	server := server.NewServer(t)
+	f := firestore.NewFirestoreClient(projectID)
+	db := db.NewDB(f)
+	server := server.NewServer(t, db)
 	fmt.Printf("Running on %s\n", port)
 	log.Fatal(http.ListenAndServe(port, server))
 }

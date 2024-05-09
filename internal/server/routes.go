@@ -3,9 +3,16 @@ package server
 import (
 	"html/template"
 	"net/http"
+
+	"nausea-web/internal/db"
 )
 
-func addRoutes(mux *http.ServeMux, t *template.Template) {
-	mux.Handle("/", notFoundMiddleware(t, routeLoggerMiddleware(handleHome(t))))
+func addRoutes(
+	mux *http.ServeMux,
+	t *template.Template,
+	db *db.DB,
+) {
+	mux.Handle("/", notFoundMiddleware(t, db,
+		routeLoggerMiddleware(handleHome(t, db))))
 	mux.Handle("/dist/", handleDist())
 }

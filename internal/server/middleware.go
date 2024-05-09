@@ -1,11 +1,15 @@
 package server
 
 import (
-	"fmt"
+	"context"
 	"html/template"
-	"nausea-web/internal/templates"
+	"log"
 	"net/http"
 	"path/filepath"
+	"time"
+
+	"nausea-web/internal/db"
+	"nausea-web/internal/templates"
 )
 
 func gzipMiddleware(h http.Handler) http.Handler {
@@ -30,10 +34,21 @@ func gzipMiddleware(h http.Handler) http.Handler {
 	})
 }
 
-func notFoundMiddleware(t *template.Template, h http.Handler) http.Handler {
+func notFoundMiddleware(t *template.Template, db *db.DB, h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
-			t.ExecuteTemplate(w, "/404", templates.TemplateData{})
+			ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
+			defer cancel()
+			meta, err := db.GetMeta(ctx)
+			if err != nil {
+				t.ExecuteTemplate(w, "/404", templates.TemplateData{})
+				return
+			}
+			t.ExecuteTemplate(w, "/404", templates.TemplateData{
+				"Title":    "Nausea",
+				"HomePage": true,
+				"Meta":     meta,
+			})
 			return
 		}
 		h.ServeHTTP(w, r)
@@ -42,7 +57,7 @@ func notFoundMiddleware(t *template.Template, h http.Handler) http.Handler {
 
 func routeLoggerMiddleware(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		fmt.Printf("%v: %v\n", r.Method, r.URL.Path)
+		log.Printf("%v: %v\n", r.Method, r.URL.Path)
 		h.ServeHTTP(w, r)
 	})
 }
