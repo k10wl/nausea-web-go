@@ -2,7 +2,6 @@ package templates
 
 import (
 	"html/template"
-	"nausea-web/internal/minify"
 	"regexp"
 )
 
@@ -21,17 +20,11 @@ type TemplateData map[string]any
 
 func NewTemplate() *template.Template {
 	tmpl := template.New("")
-	tmpl = template.Must(
-		minify.CompileTemplates(
-			"./views/404.html",
-			"./views/about.html",
-			"./views/contacts.html",
-			"./views/home.html",
-			"./views/layouts/_head.html",
-			"./views/layouts/_tail.html",
-			"./views/layouts/_navigation.html",
-		),
-	)
 	tmpl = tmpl.Funcs(template.FuncMap{"mdToLink": mdToLink})
+	tmpl.ParseGlob("./views/layouts/*.html")
+	tmpl.ParseGlob("./views/404.html")
+	tmpl.ParseGlob("./views/home.html")
+	tmpl.ParseGlob("./views/about.html")
+	tmpl.ParseGlob("./views/contacts.html")
 	return tmpl
 }
