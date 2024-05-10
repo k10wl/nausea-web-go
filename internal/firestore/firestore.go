@@ -27,6 +27,10 @@ func (f *Firestore) aboutDoc() *firestore.DocumentRef {
 	return f.dataCollection().Doc("about")
 }
 
+func (f *Firestore) contactsDoc() *firestore.DocumentRef {
+	return f.dataCollection().Doc("contacts")
+}
+
 func (f *Firestore) metaDoc() *firestore.DocumentRef {
 	return f.dataCollection().Doc("meta")
 }

@@ -13,5 +13,6 @@ func addRoutes(
 	db *db.DB,
 ) {
 	mux.Handle("/", routeLoggerMiddleware(notFoundMiddleware(t, db, handleHome(t, db))))
+	mux.Handle("/contacts", handleContacts(t, db))
 	mux.Handle("/dist/", handleDist())
 }

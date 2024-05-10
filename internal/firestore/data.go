@@ -16,7 +16,13 @@ func (f *Firestore) GetAbout(ctx context.Context) (*models.About, error) {
 }
 
 func (f *Firestore) GetContacts(ctx context.Context) (*models.Contacts, error) {
-	return nil, nil
+	snapshot, err := f.contactsDoc().Get(ctx)
+	if err != nil {
+		return nil, err
+	}
+	var contacts *models.Contacts
+	snapshot.DataTo(&contacts)
+	return contacts, nil
 }
 
 func (f *Firestore) GetMeta(ctx context.Context) (*models.Meta, error) {
