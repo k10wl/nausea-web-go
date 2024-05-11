@@ -21,9 +21,9 @@ func handleHome(t *template.Template, db *db.DB) http.Handler {
 				return
 			}
 			t.ExecuteTemplate(w, "/", templates.TemplateData{
-				"Title":    "Nausea",
-				"HomePage": true,
-				"Meta":     meta,
+				Title:    "Nausea",
+				HomePage: true,
+				Meta:     meta,
 			})
 		},
 	)
@@ -75,10 +75,11 @@ func handleContacts(t *template.Template, db *db.DB) http.Handler {
 				return
 			}
 			t.ExecuteTemplate(w, "/contacts", templates.TemplateData{
-				"Title":    "Contacts",
-				"HomePage": false,
-				"Contacts": contacts,
-				"Meta":     meta,
+				Title: "Nausea",
+				Meta:  meta,
+				Props: map[string]interface{}{
+					"Contacts": contacts,
+				},
 			},
 			)
 		})

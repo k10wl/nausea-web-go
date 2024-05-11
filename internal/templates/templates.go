@@ -2,6 +2,7 @@ package templates
 
 import (
 	"html/template"
+	"nausea-web/internal/models"
 	"regexp"
 )
 
@@ -16,7 +17,12 @@ func mdToLink(md string) template.HTML {
 	)
 }
 
-type TemplateData map[string]any
+type TemplateData struct {
+	Title    string
+	HomePage bool
+	Meta     *models.Meta
+	Props    map[string]interface{}
+}
 
 func NewTemplate() *template.Template {
 	tmpl := template.New("")

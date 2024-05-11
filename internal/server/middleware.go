@@ -45,9 +45,8 @@ func notFoundMiddleware(t *template.Template, db *db.DB, h http.Handler) http.Ha
 				return
 			}
 			t.ExecuteTemplate(w, "/404", templates.TemplateData{
-				"Title":    "Nausea",
-				"HomePage": true,
-				"Meta":     meta,
+				Title: "Not found",
+				Meta:  meta,
 			})
 			return
 		}
