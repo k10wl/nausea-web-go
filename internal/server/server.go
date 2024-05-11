@@ -12,5 +12,6 @@ func NewServer(
 ) http.Handler {
 	mux := http.NewServeMux()
 	addRoutes(mux, t, db)
-	return mux
+	withLogger := routeLoggerMiddleware(mux)
+	return withLogger
 }

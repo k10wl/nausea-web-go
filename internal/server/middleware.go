@@ -56,11 +56,13 @@ func notFoundMiddleware(t *template.Template, db *db.DB, h http.Handler) http.Ha
 
 func routeLoggerMiddleware(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		params := ""
-		if r.URL.RawQuery != "" {
-			params = "?" + r.URL.RawQuery
-		}
-		log.Printf("%v: %v%v\n", r.Method, r.URL.Path, params)
+		startTime := time.Now()
 		h.ServeHTTP(w, r)
+		duration := time.Since(startTime)
+		url := r.URL.Path
+		if r.URL.RawQuery != "" {
+			url += "?" + r.URL.RawQuery
+		}
+		log.Printf("%s %s - %s\n", r.Method, url, duration)
 	})
 }
