@@ -54,13 +54,18 @@ customElements.define(
         "background",
         `url("${this.getAttribute("thumbnail")}")`,
       );
-      this.div.style.setProperty("height", "100%");
+      this.div.style.setProperty("display", "block");
       this.div.style.setProperty("background-size", "contain");
       this.div.style.setProperty("background-repeat", "no-repeat");
-      this.img.style.setProperty("opacity", 0);
+      this.div.style.setProperty("background-position", "top");
+      this.div.style.setProperty("width", "100%");
+      this.div.style.setProperty("height", "100%");
+      this.img.style.setProperty("opacity", "0");
       this.img.style.setProperty("display", "block");
-      this.img.style.setProperty("max-width", "100%");
-      this.img.style.setProperty("max-height", "100%");
+      this.img.style.setProperty("width", "100%");
+      this.img.style.setProperty("height", "100%");
+      this.img.style.setProperty("object-fit", "contain");
+      this.img.style.setProperty("object-position", "top");
       this.img.src = this.getAttribute("src");
     }
   },
