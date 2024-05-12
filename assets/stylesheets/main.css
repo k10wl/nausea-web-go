@@ -22,6 +22,15 @@
   xxl 1400px
 */
 
+@font-face {
+  font-family: "Nausea Handwrite";
+  src: url("/dist/assets/NauseaHandwriteRegular.ttf");
+}
+
+* {
+  font-family: "Nausea Handwrite", sans-serif;
+}
+
 html {
   height: 100%;
   box-sizing: border-box;
@@ -105,15 +114,6 @@ a {
 img {
   width: 100%;
   height: auto;
-}
-
-@font-face {
-  font-family: "Nausea Handwrite";
-  src: url("/dist/assets/NauseaHandwriteRegular.ttf");
-}
-
-* {
-  font-family: "Nausea Handwrite", sans-serif;
 }
 
 .text-xs {
@@ -201,31 +201,6 @@ img {
   margin-bottom: 25px;
 }
 
-@media screen and (min-width: 576px) {
-  .header {
-    font-size: var(--text-3xl);
-    width: initial;
-  }
-  .header__nav {
-    position: static;
-    translate: 0;
-    background: transparent;
-  }
-
-  .header__nav-list {
-    display: flex;
-    gap: 1rem;
-  }
-  .header__nav-list > li:first-child {
-    flex-basis: 100%;
-  }
-
-  .header button,
-  .header__nav--hide {
-    display: none;
-  }
-}
-
 .hero {
   display: flex;
   justify-content: center;
@@ -248,15 +223,19 @@ img {
   display: flex;
   flex-wrap: wrap;
   flex-flow: row wrap-reverse;
+
   & > *:nth-child(1) {
     flex: 1 1 400px;
   }
+
   & > *:nth-child(2) {
     flex: 1 1 40ch;
   }
+
   p {
     font-size: var(--text-xl);
   }
+
   img-with-thumbnail {
     padding-bottom: 1rem;
     display: block;
@@ -270,5 +249,30 @@ img {
 @media screen and (min-width: 576px) {
   .hero {
     font-size: var(--text-4xl);
+  }
+
+  .header {
+    font-size: var(--text-3xl);
+    width: initial;
+  }
+
+  .header__nav {
+    position: static;
+    translate: 0;
+    background: transparent;
+  }
+
+  .header__nav-list {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .header__nav-list > li:first-child {
+    flex-basis: 100%;
+  }
+
+  .header button,
+  .header__nav--hide {
+    display: none;
   }
 }
