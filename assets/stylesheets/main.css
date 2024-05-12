@@ -189,11 +189,14 @@ img {
   background: #000;
   transition: 200ms translate;
   translate: -100%;
-  padding: 12px 12px;
 }
 
 .header__nav[aria-expanded] {
   translate: 0;
+}
+
+.header__nav-list {
+  padding: 12px;
 }
 
 .header__nav-list > li:first-child {
