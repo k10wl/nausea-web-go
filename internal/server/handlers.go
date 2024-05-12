@@ -29,6 +29,62 @@ func handleHome(t *template.Template, db *db.DB) http.Handler {
 	)
 }
 
+func handleAbout(t *template.Template, db *db.DB) http.Handler {
+	return http.HandlerFunc(
+		func(w http.ResponseWriter, r *http.Request) {
+			ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
+			defer cancel()
+			echan := make(chan error, 1)
+			var meta *models.Meta
+			mchan := make(chan *models.Meta, 1)
+			var about *models.About
+			cchan := make(chan *models.About, 1)
+			go func() {
+				c, err := db.GetAbout(ctx)
+				if err != nil {
+					echan <- err
+					return
+				}
+				cchan <- c
+			}()
+			go func() {
+				m, err := db.GetMeta(ctx)
+				if err != nil {
+					echan <- err
+					return
+				}
+				mchan <- m
+			}()
+			var err error
+			for i := 0; i < 2; i++ {
+				select {
+				case e := <-echan:
+					err = e
+					break
+				case m := <-mchan:
+					meta = m
+				case c := <-cchan:
+					about = c
+				case <-ctx.Done():
+					http.Error(w, "Request timed out", http.StatusRequestTimeout)
+					return
+				}
+			}
+			if err != nil {
+				t.ExecuteTemplate(w, "/404", templates.TemplateData{})
+				return
+			}
+			t.ExecuteTemplate(w, "/about", templates.TemplateData{
+				Title: "Nausea",
+				Meta:  meta,
+				Props: map[string]interface{}{
+					"About": about,
+				},
+			},
+			)
+		})
+}
+
 func handleContacts(t *template.Template, db *db.DB) http.Handler {
 	return http.HandlerFunc(
 		func(w http.ResponseWriter, r *http.Request) {

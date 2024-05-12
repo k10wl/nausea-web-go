@@ -1,22 +1,20 @@
 {{define "/"}}
 {{template "_head" .}}
 {{template "_header" .}}
-<main id="page" hx-swap-oob="true" class="h-full">
-  <div class="hero h-full">
-    <nav hx-boost="true">
-      <ul>
-        <li>
-          <a href="/about" hx-target="#page">about</a>
-        </li>
-        <li>
-          <a href="/gallery" hx-target="#page">gallery</a>
-        </li>
-        <li>
-          <a href="/contacts" hx-target="#page">contacts</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+<main id="page" hx-swap-oob="true" class="hero">
+  <nav hx-boost="true">
+    <ul>
+      <li>
+        <a href="/about" hx-target="#page">about</a>
+      </li>
+      <li>
+        <a href="/gallery" hx-target="#page">gallery</a>
+      </li>
+      <li>
+        <a href="/contacts" hx-target="#page">contacts</a>
+      </li>
+    </ul>
+  </nav>
 </main>
 {{template "_tail"}}
 {{end}}

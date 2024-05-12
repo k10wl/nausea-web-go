@@ -1,12 +1,18 @@
 {{define "/about"}}
-{{template "head" .}}
-{{template "header" .}}
-<main id="page" hx-swap-oob="true" class="h-full">
-  <div class="hero h-full">
-    <article>
-      <p class="text-lg text-end">{{.Data}}</p>
-    </article>
-  </div>
+{{template "_head" .}}
+{{template "_header" .}}
+<main id="page" hx-swap-oob="true" class="hero">
+  <article class="about">
+    <div>
+      <!-- <div class="with-thumbnail"
+        style="--_url: url('{{.Props.About.Image.ThumbnailURL}}'); aspect-ratio: {{.Props.About.Image.Width}}/{{.Props.About.Image.Height}};">
+        <img onload="setVisible(this)" style="opacity: 0;" loading="lazy" src="{{.Props.About.Image.URL}}" alt="">
+      </div> -->
+      <img-with-thumbnail width="{{.Props.About.Image.Width}}" height="{{.Props.About.Image.Height}}"
+        src="{{.Props.About.Image.URL}}" thumbnail="{{.Props.About.Image.ThumbnailURL}}"></img-with-thumbnail>
+    </div>
+    <p style="white-space: pre-wrap; margin: 0;">{{.Props.About.Bio}}</p>
+  </article>
 </main>
-{{template "tail"}}
+{{template "_tail"}}
 {{end}}

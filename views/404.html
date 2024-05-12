@@ -1,17 +1,13 @@
 {{define "/404"}}
 {{template "_head" .}}
 {{template "_header" .}}
-<main id="page" hx-swap-oob="true" class="h-full">
-  <div class="hero h-full">
-    <div>
-      <p>
-        Did we lose this page? Maybe.<br />
-        Or maybe it never existed.
-      </p>
-      <a hx-boost="true" hx-target="#page" href="/">
-        > Anyway, it's time to go home < </a>
-    </div>
-  </div>
+<main id="page" hx-swap-oob="true" class="hero">
+  <p>
+    Did we lose this page? Maybe.<br />
+    Or maybe it never existed.
+  </p>
+  <a hx-boost="true" hx-target="#page" href="/">
+    > Anyway, it's time to go home < </a>
 </main>
 {{template "_tail"}}
 {{end}}

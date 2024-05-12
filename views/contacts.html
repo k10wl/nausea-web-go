@@ -1,8 +1,8 @@
 {{define "/contacts"}}
 {{template "_head" .}}
 {{template "_header" .}}
-<main id="page" hx-swap-oob="true" class="h-full">
-  <article class="hero h-full">
+<main id="page" hx-swap-oob="true" class="hero">
+  <article>
     <p style="white-space: pre-wrap;">{{mdToLink .Props.Contacts.Links}}</p>
   </article>
 </main>
