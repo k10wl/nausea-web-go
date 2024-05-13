@@ -2,12 +2,14 @@
 {{template "_head" .}}
 {{template "_header" .}}
 <main id="page" hx-swap-oob="true" class="hero">
-  <p>
-    Did we lose this page? Maybe.<br />
-    Or maybe it never existed.
-  </p>
-  <a hx-boost="true" hx-target="#page" href="/">
-    > Anyway, it's time to go home < </a>
+  <div class="text-xl">
+    <p>
+      Did we lose this page? Maybe.<br />
+      Or maybe it never existed.
+    </p>
+    <a hx-boost="true" hx-target="#page" href="/">
+      > Anyway, it's time to go home < </a>
+  </div>
 </main>
 {{template "_tail"}}
 {{end}}

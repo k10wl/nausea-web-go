@@ -2,9 +2,11 @@
 {{template "_head" .}}
 {{template "_header" .}}
 <main id="page" hx-swap-oob="true" class="hero">
-  <article>
-    <p style="white-space: pre-wrap;">{{mdToLink .Props.Contacts.Links}}</p>
-  </article>
+  <div class="text-xl">
+    <article>
+      <p style="white-space: pre-wrap;">{{mdToLink .Props.Contacts.Links}}</p>
+    </article>
+  </div>
 </main>
 {{template "_tail"}}
 {{end}}
