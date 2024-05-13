@@ -4,10 +4,6 @@
 <main id="page" hx-swap-oob="true" class="hero">
   <article class="about">
     <div>
-      <!-- <div class="with-thumbnail"
-        style="--_url: url('{{.Props.About.Image.ThumbnailURL}}'); aspect-ratio: {{.Props.About.Image.Width}}/{{.Props.About.Image.Height}};">
-        <img onload="setVisible(this)" style="opacity: 0;" loading="lazy" src="{{.Props.About.Image.URL}}" alt="">
-      </div> -->
       <img-with-thumbnail width="{{.Props.About.Image.Width}}" height="{{.Props.About.Image.Height}}"
         src="{{.Props.About.Image.URL}}" thumbnail="{{.Props.About.Image.ThumbnailURL}}"></img-with-thumbnail>
     </div>
