@@ -54,6 +54,10 @@ customElements.define(
         "background",
         `url("${this.getAttribute("thumbnail")}")`,
       );
+      this.style.setProperty(
+        "aspect-ratio",
+        `${this.getAttribute("width")}/${this.getAttribute("height")}`,
+      );
       this.div.style.setProperty("display", "block");
       this.div.style.setProperty("background-size", "contain");
       this.div.style.setProperty("background-repeat", "no-repeat");
