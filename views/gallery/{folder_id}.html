@@ -1,0 +1,6 @@
+{{define "/gallery/{folder_id}"}}
+{{template "_head" .}}
+{{template "_header" .}}
+<main id="page" hx-swap-oob="true" class="hero">{folder_id}</main>
+{{template "_tail"}}
+{{end}}

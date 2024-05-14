@@ -10,6 +10,7 @@ type IDB interface {
 	GetAbout(ctx context.Context) (*models.About, error)
 	GetContacts(ctx context.Context) (*models.Contacts, error)
 	GetMeta(ctx context.Context) (*models.Meta, error)
+	GetFolder(ctx context.Context, id string) (*models.Folder, error)
 }
 
 type DB struct {
@@ -43,4 +44,8 @@ func (db *DB) GetMeta(ctx context.Context) (*models.Meta, error) {
 	}
 	db.metaCache = meta
 	return meta, nil
+}
+
+func (db *DB) GetFolder(ctx context.Context, id string) (*models.Folder, error) {
+	return db.client.GetFolder(ctx, id)
 }

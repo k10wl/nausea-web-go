@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"fmt"
 	"html/template"
 	"nausea-web/internal/db"
 	"nausea-web/internal/models"
@@ -83,6 +84,64 @@ func handleAbout(t *template.Template, db *db.DB) http.Handler {
 			},
 			)
 		})
+}
+
+func handleGallery(t *template.Template, db *db.DB) http.Handler {
+	return http.HandlerFunc(
+		func(w http.ResponseWriter, r *http.Request) {
+			ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
+			defer cancel()
+			echan := make(chan error, 1)
+			var meta *models.Meta
+			mchan := make(chan *models.Meta, 1)
+			var folder *models.Folder
+			fchan := make(chan *models.Folder, 1)
+			go func() {
+				m, err := db.GetMeta(ctx)
+				if err != nil {
+					echan <- err
+					return
+				}
+				mchan <- m
+			}()
+			go func() {
+				m, err := db.GetFolder(ctx, "--CAROUSEL--")
+				if err != nil {
+					echan <- err
+					return
+				}
+				fchan <- m
+			}()
+			var err error
+			for i := 0; i < 2; i++ {
+				select {
+				case e := <-echan:
+					err = e
+					break
+				case m := <-mchan:
+					meta = m
+				case f := <-fchan:
+					folder = f
+				case <-ctx.Done():
+					http.Error(w, "Request timed out", http.StatusRequestTimeout)
+					return
+				}
+			}
+			if err != nil {
+				t.ExecuteTemplate(w, "/404", templates.TemplateData{})
+				return
+			}
+			fmt.Printf("folder: %v\n", folder)
+			t.ExecuteTemplate(w, "/gallery", templates.TemplateData{
+				Title: "Gallery",
+				Meta:  meta,
+				Props: map[string]interface{}{
+					"Folder": folder,
+					"Raw":    fmt.Sprintf("%+v", folder),
+				},
+			})
+		},
+	)
 }
 
 func handleContacts(t *template.Template, db *db.DB) http.Handler {

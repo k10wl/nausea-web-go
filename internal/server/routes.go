@@ -15,5 +15,6 @@ func addRoutes(
 	mux.Handle("/", notFoundMiddleware(t, db, handleHome(t, db)))
 	mux.Handle("/about", handleAbout(t, db))
 	mux.Handle("/contacts", handleContacts(t, db))
+	mux.Handle("/gallery", handleGallery(t, db))
 	mux.Handle("/dist/", handleDist())
 }

@@ -1,0 +1,8 @@
+{{define "/gallery"}}
+{{template "_head" .}}
+{{template "_header" .}}
+<main id="page" hx-swap-oob="true" class="hero">/gallery
+  {{.Props.Raw}}
+</main>
+{{template "_tail"}}
+{{end}}

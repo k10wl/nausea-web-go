@@ -23,6 +23,10 @@ func (f *Firestore) dataCollection() *firestore.CollectionRef {
 	return f.client.Collection("data")
 }
 
+func (f *Firestore) foldersCollection() *firestore.CollectionRef {
+	return f.client.Collection("folders")
+}
+
 func (f *Firestore) aboutDoc() *firestore.DocumentRef {
 	return f.dataCollection().Doc("about")
 }
