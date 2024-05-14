@@ -37,7 +37,7 @@ function toggleHeader() {
 }
 
 customElements.define(
-  "img-with-thumbnail",
+  "custom-img-with-thumbnail",
   class ImageWithThumbnail extends HTMLElement {
     constructor() {
       super();

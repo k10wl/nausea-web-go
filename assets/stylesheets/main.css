@@ -204,7 +204,7 @@ img {
     font-size: var(--text-xl);
   }
 
-  img-with-thumbnail {
+  custom-img-with-thumbnail {
     padding-bottom: 1rem;
     display: block;
     position: sticky;
